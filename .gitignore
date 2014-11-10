@@ -1,0 +1,6 @@
+bak/*
+output/*
+.doit.db.db
+.*.swp
+.*.swo
+*.pyc

@@ -1,0 +1,7 @@
+{
+	"passwords"	: [ "rockyou-all", "1000000yandex2014", "CMIYC2010-cracked", "CMIYC2010-uncracked", "phrases-rand39", "random10" ],
+	"skip-guess"	: [ "CMIYC2010-cracked", "CMIYC2010-uncracked", "phrases-rand39", "random10" ],
+	"dicts"		: [ "common-passwords", "english", "tiny" ],
+	"meters"	: [ "NOMETER", "passwdqc" ],
+	"rules"		: [ "none", "default", "jumbo" ]
+}
