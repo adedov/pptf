@@ -327,24 +327,26 @@ def task_show_database_report():
 				eff_sql += "SELECT * FROM v_crack_report WHERE passwords LIKE '%s';\n" % p
 				eco_sql += "SELECT * FROM v_eff_report WHERE passwords LIKE '%s';\n" % p
 
-			sql = """.width 25 25 15 12 12 12 12 12 12
+			sql = """
+.mode column
+.width 25 25 15 12 12 12 12 12 12
 .header off
 SELECT '
-Absolute-numbers crack report
+Absolute-numbers report
 ';
 .header on
 %(abs_sql)s
 
 .header off
 SELECT '
-Effectiveness of crack
+Effectiveness of guessing
 ';
 .header on
 %(eff_sql)s
 
 .header off
 SELECT '
-Economy of crack
+Economy of guessing
 ';
 .header on
 %(eco_sql)s
