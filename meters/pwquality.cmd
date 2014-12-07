@@ -1,1 +1,1 @@
-DYLD_LIBRARY_PATH=meters/pwquality/ meters/pwquality/pwscore < %(source)s
+python meters/pwquality/pwscore.py < %(source)s
