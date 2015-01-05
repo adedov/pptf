@@ -13,17 +13,16 @@ See my [slides](http://www.slideshare.net/antondedov5/zn2013-testing-of-password
 
 ## Requirements
 
+1. [John The Ripper](http://openwall.com/john/)
 1. Python [doit](http://pydoit.org/)
-2. Sqlite3
-3. Node.js recommended
+1. Sqlite3
+1. Node.js recommended
 
 ## Preparations
-
-In order to test specific policy you need some preparations:
-
-1. Place big enough password dumps into "passwords" folder (see [](passwords/README)).
-2. Make command wrapper and, probably, implementation of password policy of interest in "meters" folder.
-3. Configure test case configuration in JSON. Use [](default.json) as example.
+1. Compile John The Ripper; link *run* folder into local directory.
+1. Place big enough password dumps into "passwords" folder (see [passwords/README](passwords/README)).
+1. Make command wrapper and, probably, implementation of password policy of interest in "meters" folder (see [meters/README.md](meters/README.md)).
+1. Configure test case configuration in JSON. Use [default.json](default.json) as example.
 
 ## Run
 
