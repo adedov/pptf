@@ -11,7 +11,4 @@ Specific requirements for wrapper:
   - OK: password
   - Bad: password
 
-Framework provides one special password policy *NOMETER* that accepts any password as a good one:
-```
-awk '{print "OK: " $0 ;}' < %(source)s
-```
+Framework provides one special password policy [NOMETER](meters/NOMETER.cmd) that accepts any password as a good one. So you can compare your actual policy to an absent one.
