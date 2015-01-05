@@ -20,7 +20,7 @@ See my [slides](http://www.slideshare.net/antondedov5/zn2013-testing-of-password
 
 ## Preparations
 1. Compile John The Ripper; link *run* folder into local directory.
-1. Place big enough password dumps into "passwords" folder (see [passwords/README](passwords/README)).
+1. Place big enough password dumps into "passwords" folder (see [passwords/README](passwords/README.md)).
 1. Make command wrapper and, probably, implementation of password policy of interest in "meters" folder (see [meters/README.md](meters/README.md)).
 1. Configure test case configuration in JSON. Use [default.json](default.json) as example.
 
