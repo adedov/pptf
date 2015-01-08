@@ -36,8 +36,21 @@ If you have configuration for test case in "test1.json", use following command t
 
 The framework creates folder *output* to put all intermediate and final artefacts. The following files are useful for analysis:
 
-|-----|-----|
-| output/&lt;dump&gt;-&lt;policy&gt;.meter | all passwords from particular *dump* that have been accepted by *policy*. |
-| output/&lt;dump&gt;-&lt;policy&gt;.john | John the Ripper input file for pair {*dump*, *policy*}. |
-| output/&lt;dump&gt;-&lt;policy&gt;-&lt;dictionary&gt;.pot | JtR pot files for cracking sessions against passwords from *dump* accepted by the *policy* using specific *dictionary*. |
-| output/report-&lt;case&gt;.db | SQLite3 database that contain statistics data about all password evaluation and guessing sessions for test the test *case*. Take a look at [report_schema.sql](sql/report_schema.sql) for schema. |
+<table>
+<tr>
+<td>output/&lt;dump&gt;-&lt;policy&gt;.meter</td>
+<td>All passwords from particular *dump* that have been accepted by *policy*.</td>
+</tr>
+<tr>
+<td>output/&lt;dump&gt;-&lt;policy&gt;.john</td>
+<td>John the Ripper input file for pair {*dump*, *policy*}.</td>
+</tr>
+<tr>
+<td>output/&lt;dump&gt;-&lt;policy&gt;-&lt;dictionary&gt;.pot</td>
+<td>JtR pot files for cracking sessions against passwords from *dump* accepted by the *policy* using specific *dictionary*.</td>
+</tr>
+<tr>
+<td>output/report-&lt;case&gt;.db</td>
+<td>SQLite3 database that contain statistics data about all password evaluation and guessing sessions for test the test *case*. Take a look at [report_schema.sql](sql/report_schema.sql) for schema.</td>
+</tr>
+</table>
