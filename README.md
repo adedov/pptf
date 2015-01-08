@@ -34,7 +34,7 @@ If you have configuration for test case in "test1.json", use following command t
 
 ## Artefacts
 
-The framework creates folder *output* to put all intermediate and final artefacts. There are following useful files for subsequent analysis:
+The framework creates folder *output* to put all intermediate and final artefacts. The following files are useful for analysis:
 
 - output/&lt;dump&gt;-&lt;policy&gt;.meter : all passwords from particular *dump* that have been accepted by *policy*.
 - output/&lt;dump&gt;-&lt;policy&gt;.john : John the Ripper input file for pair {*dump*, *policy*}.
