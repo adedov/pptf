@@ -38,7 +38,7 @@ The framework creates folder *output* to put all intermediate and final artefact
 
 <table>
 <tr>
-<td>output/&lt;dump&gt;-&lt;policy&gt;.meter</td>
+<td width="50%">output/&lt;dump&gt;-&lt;policy&gt;.meter</td>
 <td>All passwords from particular *dump* that have been accepted by *policy*.</td>
 </tr>
 <tr>
