@@ -129,7 +129,7 @@ def task_generate_dictionaries():
 			
 			yield {
 				"name" : target,
-				"actions" : [ "run/john --nolog --wordlist=%s %s --stdout > %s" % (source, rules, target) ],
+				"actions" : [ "run/john --nolog --wordlist=%s --session=%s %s --stdout > %s" % (source, target, rules, target) ],
 				"targets" : [ target ],
 				"file_dep" : [ source ]
 			}
@@ -140,13 +140,14 @@ def task_guess_passwords():
 
 		for d in case_config.gen_dicts:
 			dname = os.path.splitext(os.path.basename(d))[0]
-			target = "%s-%s.pot" % (os.path.splitext(j)[0], dname)
+			sess = "%s-%s" % (os.path.splitext(j)[0], dname)
+			target = sess + ".pot"
 			case_config.pot_files[(p,m,dname)] = target
 
 			yield {
 				"name" : target,
 				"actions" : [
-					"run/john --nolog --format=dummy --wordlist=%s --fork=4 %s --pot=%s >/dev/null" % (d, j, target),
+					"run/john --nolog --format=dummy --fork=4 --wordlist=%s --session=%s %s --pot=%s >/dev/null" % (d, sess, j, target),
 				],
 				"targets" : [ target ],
 				"file_dep" : [ j, d ]
@@ -323,9 +324,9 @@ def task_show_database_report():
 				if p in case_config.skip_guess:
 					continue
 
-				abs_sql += "SELECT * FROM v_crack_report_abs WHERE passwords LIKE '%s';\n" % p
-				eff_sql += "SELECT * FROM v_crack_report WHERE passwords LIKE '%s';\n" % p
-				eco_sql += "SELECT * FROM v_eff_report WHERE passwords LIKE '%s';\n" % p
+				abs_sql += "SELECT * FROM v_crack_report_abs WHERE passwords LIKE '%s' ORDER BY dict_size;\n" % p
+				eff_sql += "SELECT * FROM v_crack_report WHERE passwords LIKE '%s' ORDER BY dict_size;\n" % p
+				eco_sql += "SELECT * FROM v_eff_report WHERE passwords LIKE '%s' ORDER BY dict_size;\n" % p
 
 			sql = """
 .mode column
