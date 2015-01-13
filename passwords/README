@@ -1,5 +1,0 @@
-Add your password lists that will passed thorugh meters here. Password files
-should be plain text, one password per row. Names of password list files should
-be ended with .lst extension, like
-  passwords/rockyou.lst
-  passwords/linkedin.lst
