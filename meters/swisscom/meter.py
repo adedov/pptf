@@ -70,7 +70,7 @@ while True:
 	if not x:
 		break
 
-	x = x.rstrip('\n')
+	x = x.rstrip('\n\r')
 	passok = analyze(x)
 
 	if passok:
