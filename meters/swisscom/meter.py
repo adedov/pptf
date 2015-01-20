@@ -1,4 +1,3 @@
-import sets
 import sys
 
 class Fail:
@@ -11,6 +10,8 @@ class Fail:
 D = 1
 A = 2
 O = 4
+L = 8
+U = 16
 ABC = "abcdefghijklmnopqrstuvwxyz"
 CBA = "zyxwvutsrqponmlkjihgfedcba"
 
@@ -18,7 +19,7 @@ def analyze(p):
 	classes = 0
 	l = len(p)
 	lenok = False
-	uniq = sets.Set()
+	uniq = set()
 
 	for c in list(p):
 		if ord(c) > 127:
@@ -30,6 +31,12 @@ def analyze(p):
 			classes |= D
 		elif c.isalpha():
 			classes |= A
+			if c.isupper():
+				classes |= U
+			else:
+				classes |= L
+		elif c.isspace():
+			return Fail("spaces not allowed")
 		else:
 			classes |= O
 
@@ -39,13 +46,16 @@ def analyze(p):
 	if len(uniq) < 3:
 		return Fail("need at least 3 different chars")
 
-	if classes & A & D or classes & A & O or classes & D & O:
+	if (classes & A and classes & D) or (classes & A and classes & O) or (classes & D and classes & O):
 		if l < 8:
 			return Fail("too short")
 	else:
 		if l < 12:
 			return Fail("too short")
-	
+
+		if classes & A and not (classes & L and classes & U):
+			return Fail("need upper & lowercase")
+
 	if l > 32:
 		return Fail("too long")
 
