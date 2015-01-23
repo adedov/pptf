@@ -49,6 +49,8 @@ def task__config():
 		]
 	}
 
+rm_action = lambda f: "rm -f %s" % (f)
+
 #
 # Run password meters
 #
@@ -147,6 +149,7 @@ def task_guess_passwords():
 			yield {
 				"name" : target,
 				"actions" : [
+					rm_action(target),
 					"run/john --nolog --format=dummy --fork=4 --wordlist=%s --session=%s %s --pot=%s >/dev/null" % (d, sess, j, target),
 				],
 				"targets" : [ target ],
@@ -163,6 +166,33 @@ def task_crack():
 #
 # Reporting
 #
+
+def task_gen_password_tops():
+	topn_task = lambda src, tgt:  CmdAction("sh gentop.sh 1000 %s %s" % (source, target)) 
+
+	# top N for original password bases
+	for p in case_config.passwords:
+		source = "passwords/%s.lst" % (p,)
+		target = "output/%s.top" % (p,)
+
+		yield {
+			"name" : target,
+			"actions" : [ topn_task(source, target) ],
+			"file_dep" : [ source ],
+			"targets" : [ target ],
+		}
+
+	# top N for passwords passed polices
+	for x in case_config.meter_files.items():
+		(p, m), source = x
+		target = "output/%s-%s.top" % (p, m)
+ 
+		yield {
+			"name" : target,
+			"actions" : [ topn_task(source, target) ],
+			"file_dep" : [ source ],
+			"targets" : [ target ],
+		}
 
 def task_gen_total_pots():
 	pots = {}
